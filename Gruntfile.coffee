@@ -1,11 +1,11 @@
 connectMW = require(require("path").resolve("middleware", "connectMW.coffee"))
 
 module.exports = (grunt) ->
+
+    port = 7788
   
     # Project configuration.
     grunt.initConfig
-
-        port = 7788
 
         watch:
             coffee_app:
