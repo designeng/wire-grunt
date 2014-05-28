@@ -46,7 +46,22 @@ module.exports = (grunt) ->
             main:
                 src: ["app/js/requireConfig.js", "app/js/main.js"]
                 dest: "app/js/main.js"
-        
+
+    grunt.loadNpmTasks "grunt-contrib-watch"
+    grunt.loadNpmTasks "grunt-contrib-coffee"
+    grunt.loadNpmTasks "grunt-contrib-connect"
+    grunt.loadNpmTasks "grunt-contrib-concat"
+    grunt.loadNpmTasks "grunt-newer"
+
+    grunt.registerTask "default", ["connect:server", "watch"]
+
+    # compilation
+    grunt.registerTask "coffee-compile-app", ["newer:coffee:app"]
+
+    # server
+    grunt.registerTask "server", ["connect"]
+    
+    # wire-based tasks integration
     grunt.task.loadTasks "tasks"
     grunt.registerTask "we", ["wire-experiment"]
 
