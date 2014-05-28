@@ -68,7 +68,10 @@ module.exports = (grunt) ->
 
                     modules: [
                         name: "main"
-                        include: ["main"]
+                        include: [
+                            "main"
+                            "components/autocomplete/spec"
+                        ]
                     ]
 
     grunt.loadNpmTasks "grunt-contrib-watch"
@@ -89,7 +92,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks "grunt-contrib-requirejs"
     grunt.loadNpmTasks "grunt-contrib-clean"
 
-    grunt.registerTask "build", ["clean:public", "requirejs:compile"]
+    grunt.registerTask "build", ["requirejs:compile"]
     
     # wire-based tasks integration
     grunt.task.loadTasks "tasks"
