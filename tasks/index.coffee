@@ -2,7 +2,9 @@ wire = require "wire"
 
 module.exports = (grunt) ->
 
+	noop = () ->
+
 	grunt.task.registerTask "wire-experiment", "description...", () ->
 		wire(require('./module')).then((context) ->
-				console.log "CTX:", context
+				noop()
 			, console.error)

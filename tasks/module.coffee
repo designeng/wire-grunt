@@ -1,6 +1,10 @@
 fs = require "fs"
 
 module.exports =
+	$plugins:[
+		'wire/aop'
+	]
+
 	message: "test"
 
 	oneComponent:
@@ -9,3 +13,5 @@ module.exports =
 			test: fs
 		ready:
 			"onReady": {}
+		afterReturning:
+			"onReady": "doSomething"

@@ -1,5 +1,8 @@
 class Controller
 	onReady: ->
-		console.log "___onReady", @test
+		return "___onReady " + 123
+
+	doSomething: (res) ->
+		console.log res
 
 module.exports = Controller
