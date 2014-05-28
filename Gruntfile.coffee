@@ -49,6 +49,28 @@ module.exports = (grunt) ->
                 src: ["app/js/requireConfig.js", "app/js/main.js"]
                 dest: "app/js/main.js"
 
+        clean:
+            public: "public"
+
+        requirejs:
+            compile:
+                options:
+                    appDir: "app"
+                    baseUrl: "js"
+                    mainConfigFile: "app/js/requireConfig.js"
+                    dir: "public"
+
+                    optimize: "none"
+                    removeCombined: true
+
+                    paths:
+                        "wire/builder/rjs": "../../builder/builder"
+
+                    modules: [
+                        name: "main"
+                        include: ["main"]
+                    ]
+
     grunt.loadNpmTasks "grunt-contrib-watch"
     grunt.loadNpmTasks "grunt-contrib-coffee"
     grunt.loadNpmTasks "grunt-contrib-connect"
@@ -62,6 +84,12 @@ module.exports = (grunt) ->
 
     # server
     grunt.registerTask "server", ["connect"]
+
+    # build
+    grunt.loadNpmTasks "grunt-contrib-requirejs"
+    grunt.loadNpmTasks "grunt-contrib-clean"
+
+    grunt.registerTask "build", ["clean:public", "requirejs:compile"]
     
     # wire-based tasks integration
     grunt.task.loadTasks "tasks"
