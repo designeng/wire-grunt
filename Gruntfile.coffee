@@ -39,6 +39,8 @@ module.exports = (grunt) ->
                     base: '.'
                     middleware: (connect, options) ->
                         return [
+                            connectMW.stubService
+                            connectMW.autocompleteService
                             connectMW.folderMount(connect, options.base)
                         ]
 
