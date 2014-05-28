@@ -1,4 +1,5 @@
 fs = require "fs"
+grunt = require "grunt"
 
 module.exports =
 	$plugins:[
@@ -11,6 +12,7 @@ module.exports =
 		create: require "./oneComponent"
 		properties:
 			test: fs
+			read: grunt.file.read
 		ready:
 			"onReady": {}
 		afterReturning:
