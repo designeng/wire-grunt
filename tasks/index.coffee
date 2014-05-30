@@ -1,10 +1,15 @@
 wire = require "wire"
+spec = require('./module')
 
 module.exports = (grunt) ->
 
 	noop = () ->
 
 	grunt.task.registerTask "wire-experiment", "description...", () ->
-		wire(require('./module')).then((context) ->
+
+		done = @async()
+		spec.done = done
+
+		wire(spec).then((context) ->
 				noop()
 			, console.error)

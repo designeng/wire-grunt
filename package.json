@@ -3,6 +3,7 @@
   "scripts": {},
   "dependencies": {
     "wire": "",
+    "when": "~3.2.2",
     "fs-walk": "",
     "underscore": "latest"
   },

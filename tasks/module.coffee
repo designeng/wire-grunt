@@ -13,7 +13,9 @@ module.exports =
 		properties:
 			test: fs
 			read: grunt.file.read
+			done: {$ref: 'done'}
 		ready:
 			"onReady": {}
 		afterReturning:
-			"onReady": "doSomething"
+			# "onReady": "doSomething | resolvePromises"
+			"onReady": "resolvePromises"
